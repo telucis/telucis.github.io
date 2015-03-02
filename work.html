@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="author" content="Telucis">
+<meta name="description" content="Home of Telucis :: Web Designer &amp; Retoucher based in Beijing">
+
+<meta property="fb:app_id" content="102986046469008" />
+
+
+<title>telucis</title>
+
+<link rel="shortcut icon" href="images/favicon.png">
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css"/>
+<link type="text/css" media="screen" rel="stylesheet" href="css/awwwards.css" />
+<link rel="stylesheet" type="text/css" href="css/new-style.css"/>
+
+<style type="text/css">#wrapper { opacity: 0; }</style>
+<noscript> <style type="text/css">#wrapper { opacity: 1; }</style></noscript>
+
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="js/jquery.fancybox.js"></script>
+
+<script type="text/javascript" src="js/socialite.js"></script>
+<script type="text/javascript" src="js/socialite.pinterest.js"></script>
+<script type="text/javascript" src="js/comment-validation.js"></script>
+
+<script type="text/javascript" src="js/smartajax/load.smartajax.js"></script>
+<script type="text/javascript" src="js/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="js/scripts.js"></script>
+
+
+
+<script>
+$(document).ready(function(){
+    $('body').append('<div id="loaderWrapper"><div id="page-loader"></div></div>');
+    
+    $('header.desktop').css({ 'marginLeft' : -204 });
+    $('body').css({ 'overflow' : 'hidden' });
+    $('#nav li').css({ 'marginLeft' : -200 });
+  refreshNav();
+  isotopeMyStuff();
+  filterNavMove();
+  siteAnimationsGeneral();
+  validateBlogPost();
+  validateContact();
+  homeTakeover();
+  
+$(".fancybox").fancybox({
+    helpers : {
+        overlay : {
+            locked : false
+        }
+    }
+});
+
+
+
+
+  // hide #back-top first
+  $("#back-top").css({ 'opacity' : '0' });
+
+  // fade in #back-top
+  $(function () {
+
+    $(window).scroll(function () {
+      if ($(this).scrollTop() > 800) {
+        $('#btnTop').stop().animate({ bottom: '0', opacity:'1'}, 400, "easeOutBack");
+      } else {
+        $('#btnTop').stop().animate({ bottom: '-67', opacity:'0'}, 400, "easeOutBack");
+      }
+    });
+
+    // scroll body to 0px on click
+    $('#btnTop').click(function () {
+      $('body,html').animate({
+        scrollTop: 0
+      }, 600, "swing");
+      return false;
+    });
+  });
+
+
+
+})
+
+
+
+
+$(window).load(function() {
+
+      $('#wrapper').css({ 'opacity' : '1' });
+      
+      $('#page-loader').delay(1500).animate({ marginTop: '-270px' }, 400, "easeInBack", function() {
+    // Animation complete.
+          isotopeMyStuff();
+          $('#loaderWrapper').fadeOut(500, function(){
+          $('body').css({ 'overflow' : 'auto' });
+          $('#oldSite_lightbox').fadeIn();
+          $('header.desktop').animate({ marginLeft: '0px' }, 400, "easeOutCubic");
+          $('#nav li').each(function(i) {   
+       $(this).delay(i*200).animate({
+        marginLeft: '0px'
+
+      })
+    });
+    });
+  });
+
+
+
+
+})
+
+$('#book').animate({
+    opacity: 0.25,
+    left: '+=50',
+    height: 'toggle'
+  }, 5000, function() {
+    // Animation complete.
+  });
+
+
+
+
+
+</script>
+
+
+
+
+<!-- Bad Behavior 2.2.14 run time: 3.348 ms -->
+<script type="text/javascript">
+<!--
+function bb2_addLoadEvent(func) {
+  var oldonload = window.onload;
+  if (typeof window.onload != 'function') {
+    window.onload = func;
+  } else {
+    window.onload = function() {
+      oldonload();
+      func();
+    }
+  }
+}
+
+bb2_addLoadEvent(function() {
+  for ( i=0; i < document.forms.length; i++ ) {
+    if (document.forms[i].method == 'post') {
+      var myElement = document.createElement('input');
+      myElement.setAttribute('type', 'hidden');
+      myElement.name = 'bb2_screener_';
+      myElement.value = '1424869512 60.10.71.42';
+      document.forms[i].appendChild(myElement);
+    }
+  }
+});
+// --></script>
+    
+<!--
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-19034527-1', 'marklawrencedesign.com');
+  ga('send', 'pageview');
+
+</script>
+-->
+
+</head>
+
+<body class="workPage">
+
+<div id="wrapper">
+
+  <header class="desktop smartAjaxNav">
+          <a href="http://www.marklawrencedesign.com" class="link more homeLink">
+            <div id="logo" class="hide-text desktopLogo"><h1>Telucis Wu Design</h1></div><!--logo-->
+            <div id="aniLogo" class="logo"><h1>Telucis Wu Design</h1></div>
+          </a>
+          
+
+          <div id="linkWrap">           
+
+            <nav id="nav" class="nav">
+              <ul>
+                <li class="workLink"><a href="http://www.marklawrencedesign.com/work/">Work</a></li>
+                <li class="navMoveWrap">
+                  <ul id="navMove">
+                    <li class="page_item page-item-12"><a class="link more" href="http://www.marklawrencedesign.com/blog/">Blog</a></li>
+                    <li class="page_item page-item-14"><a class="link more" href="http://www.marklawrencedesign.com/about/">About</a></li>
+                    <li class="page_item page-item-16"><a class="link more" href="http://www.marklawrencedesign.com/contact/">Contact</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+
+          </div> <!-- linkWrap -->
+  </header>
+      
+      <div id="navBG"></div>
+<!--******************-->
+<!--    MOBILE NAV    -->
+<!--******************-->
+  <header class="mobile smartAjaxNav">
+    <a href="http://www.marklawrencedesign.com" class="link more">
+      <div id="mobileLogo" class="hide-text logo"><h1>Telucis Wu Design</h1></div><!--logo-->
+    </a>
+    <nav id="mobileNav" class="nav">
+      <ul>
+        <li class="page_item page-item-10 current_page_item"><a class="link more" href="http://www.marklawrencedesign.com/work/">Work</a></li>
+        <li class="page_item page-item-12"><a class="link more" href="http://www.marklawrencedesign.com/blog/">Blog</a></li>
+        <li class="page_item page-item-14"><a class="link more" href="http://www.marklawrencedesign.com/about/">About</a></li>
+        <li class="page_item page-item-16"><a class="link more" href="http://www.marklawrencedesign.com/contact/">Contact</a></li>
+      </ul>
+    </nav>
+  </header> 
+
+
+<!--******************-->
+<!-- AJAX LOADED AREA -->
+<!--******************-->
+
+  <div id="ajaxLoad">
+    <section id="options" class="clearfix">
+        <ul id="filters" class="option-set clearfix" data-option-key="filter">
+          <li class="filterNav"><a href="#filter" data-option-value="*" class="showAll selected">All</a></li>
+          <li class="filterNav"><a href="#filter" data-option-value=".client">Client</a></li>
+          <li class="filterNav"><a href="#filter" data-option-value=".personal">Personal</a></li>
+          <li class="filterNav"><a href="#filter" data-option-value=".website">Website</a></li>
+          <li class="filterNav"><a href="#filter" data-option-value=".retouch">Retouch</a></li>
+          <li class="filterNav"><a href="#filter" data-option-value=".threed">3D</a></li>
+          <li class="filterNav"><a href="#filter" data-option-value=".photography">Photography</a></li>
+        </ul>
+    </section> <!-- options -->
+    <div id="content" class="workHook">
+      <section>
+
+        <ul id="container" class="clearfix workEntries landingPageContainer">
+
+          <li class="element client website Work "><a href="http://www.marklawrencedesign.com/kate-spade-ecommerce-web-design/"><h2>'挡板扫描装置步进电机驱动'</h2><img src="images/work/1.jpg" title="Kate Spade &#8211; eCommerce Web design"/></a></li>
+                     
+          <li class="element client website Work "><a href="http://www.marklawrencedesign.com/bbc-responsive-website/"><h2>'BBC &#8211; Responsive Website'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2014/10/bbc-thumb.jpg" title="BBC &#8211; Responsive Website"/></a></li>
+                     
+          <li class="element client website Work "><a href="http://www.marklawrencedesign.com/wonderbra-responsive-website/"><h2>'Wonderbra Responsive Website'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2014/10/wonderbra-thumb.jpg" title="Wonderbra Responsive Website"/></a></li>
+                     
+          <li class="element client website Work "><a href="http://www.marklawrencedesign.com/crombie-website/"><h2>'Crombie Website'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2014/10/crombie-thumb.jpg" title="Crombie Website"/></a></li>
+
+                     
+          <li class="element client retouch Work "><a href="http://www.marklawrencedesign.com/adidas/"><h2>'Adidas'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2014/11/adidas-thumb.jpg" title="Adidas"/></a></li>
+
+                     
+          <li class="element personal photography retouch Work "><a href="http://www.marklawrencedesign.com/practical-photoshop/"><h2>'Practical Photoshop'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2014/11/prac-ps-thumb.jpg" title="Practical Photoshop"/></a></li>
+
+                     
+          <li class="element client website Work "><a href="http://www.marklawrencedesign.com/neds-noodle-bar/"><h2>'Neds Noodle Bar'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2014/10/neds-noodles-thumb.jpg" title="Neds Noodle Bar"/></a></li>
+
+                     
+          <li class="element client website Work "><a href="http://www.marklawrencedesign.com/zumeo-design-website/"><h2>'Zumeo Design &#8211; Website'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2014/10/zumeo-thumb.jpg" title="Zumeo Design &#8211; Website"/></a></li>
+
+                     
+          <li class="element client website Work "><a href="http://www.marklawrencedesign.com/tml-thats-my-line/"><h2>'TML &#8211; That&#8217;s My Line'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2014/10/tml-thumb.jpg" title="TML &#8211; That&#8217;s My Line"/></a></li>
+
+                     
+          <li class="element personal website Work "><a href="http://www.marklawrencedesign.com/mld-2011/"><h2>'MLD 2011 parallax website'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2012/11/2011_site_MLD-brand-thumb.jpg" title="MLD 2011 parallax website"/></a></li>
+
+                     
+          <li class="element retouch Work "><a href="http://www.marklawrencedesign.com/funk-beauty/"><h2>'Bikini Babe'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2012/09/folioImage18.jpg" title="Bikini Babe"/></a></li>
+
+                     
+          <li class="element retouch Work "><a href="http://www.marklawrencedesign.com/fembot-2/"><h2>'Fembot'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2012/10/fembot2_work_image.jpg" title="Fembot"/></a></li>
+
+                     
+          <li class="element client retouch Work "><a href="http://www.marklawrencedesign.com/red-angel/"><h2>'Red Angel'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2012/09/folioImage11.jpg" title="Red Angel"/></a></li>
+
+                     
+          <li class="element personal retouch Work "><a href="http://www.marklawrencedesign.com/love-you/"><h2>'Love You'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2013/01/love_u_thumb.jpg" title="Love You"/></a></li>
+
+                     
+          <li class="element retouch Work "><a href="http://www.marklawrencedesign.com/little-lady/"><h2>'Little Lady'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2012/09/folioImage19.jpg" title="Little Lady"/></a></li>
+
+                     
+          <li class="element retouch Work "><a href="http://www.marklawrencedesign.com/dream-glam/"><h2>'Dream Glam'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2012/09/folioImage1.jpg" title="Dream Glam"/></a></li>
+
+                     
+          <li class="element personal threed Work "><a href="http://www.marklawrencedesign.com/perfect-crime/"><h2>'Perfect Crime'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2012/10/perfect_crime_work_image.jpg" title="Perfect Crime"/></a></li>
+
+                     
+          <li class="element personal retouch Work "><a href="http://www.marklawrencedesign.com/punk/"><h2>'Punk'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2013/01/punk_thumb.jpg" title="Punk"/></a></li>
+
+                     
+          <li class="element personal Work "><a href="http://www.marklawrencedesign.com/sombre-rock/"><h2>'Sombre Rock'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2012/09/folioImage16.jpg" title="Sombre Rock"/></a></li>
+
+                     
+          <li class="element personal retouch Work "><a href="http://www.marklawrencedesign.com/thug/"><h2>'Thug'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2013/01/thug_thumb.jpg" title="Thug"/></a></li>
+
+                     
+          <li class="element personal retouch Work "><a href="http://www.marklawrencedesign.com/the-fighter/"><h2>'The Fighter'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2013/02/the_fighter_thumb.jpg" title="The Fighter"/></a></li>
+
+                     
+          <li class="element personal retouch Work "><a href="http://www.marklawrencedesign.com/russell-brand/"><h2>'Russell Brand'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2013/02/russell_brand_thumb.jpg" title="Russell Brand"/></a></li>
+
+                     
+          <li class="element personal retouch Work "><a href="http://www.marklawrencedesign.com/bojo-caricature/"><h2>'BoJo &#8211; Caricature'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2013/07/bojo_thumb.jpg" title="BoJo &#8211; Caricature"/></a></li>
+
+                     
+          <li class="element personal photography retouch Work "><a href="http://www.marklawrencedesign.com/expectant-bride/"><h2>'Expectant Bride'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2013/06/expectant_bride_thumb.jpg" title="Expectant Bride"/></a></li>
+
+                     
+          <li class="element personal photography retouch Work "><a href="http://www.marklawrencedesign.com/rattled2/"><h2>'Rattled'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2013/11/rattled_thumb.jpg" title="Rattled"/></a></li>
+
+                     
+          <li class="element personal photography retouch Work "><a href="http://www.marklawrencedesign.com/tom-cruise-caricature/"><h2>'Tom Cruise &#8211; Caricature'</h2><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2013/06/tom_cruise_thumb.jpg" title="Tom Cruise &#8211; Caricature"/></a></li>
+
+           
+
+        </ul>  
+
+      </section> 
+
+      <script>
+        $(document).ready(function(){
+          isotopeMyStuff();
+        })
+      </script>
+
+    </div><!-- content Ends-->
+  </div><!-- ajaxLoad Ends -->
+
+<!--***********************-->
+<!-- AJAX LOADED AREA ENDS -->
+<!--***********************-->  
+
+  <div id='lightbox'></div>
+  <div id="ajax-loader"><img src="images/ajax-loader-sm.gif" width="31" height="31" /></div>
+  <div id="btnTop">   </div>
+
+</div><!--wrapper-->
+
+<!--
+<div id="awwwards" class="right green">
+<a href="http://www.awwwards.com/best-websites/mark-lawrence-design-1" target="_blank">best websites of the world</a>
+</div>
+-->
+</body>
+
+</html>  

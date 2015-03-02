@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="author" content="Mark Lawrence">
+<meta name="description" content="Mark Lawrence Design Portfolio Entry &#058;&#058; Kate Spade &#8211; eCommerce Web design">
+
+<meta property="fb:app_id" content="102986046469008" />
+
+
+<title>Mark Lawrence Design &#058;&#058; Kate Spade &#8211; eCommerce Web design</title>
+
+<link rel="shortcut icon" href="http://www.marklawrencedesign.com/MLD_main_site/wp-content/themes/MLD/images/favicon.png">
+<link rel="stylesheet" type="text/css" href="http://www.marklawrencedesign.com/MLD_main_site/wp-content/themes/MLD/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.marklawrencedesign.com/MLD_main_site/wp-content/themes/MLD/css/jquery.fancybox.css"/>
+<link type="text/css" media="screen" rel="stylesheet" href="http://www.marklawrencedesign.com/MLD_main_site/wp-content/themes/MLD/css/awwwards.css" />
+<link href='http://fonts.googleapis.com/css?family=Lato:400,300,400italic,300italic,700,700italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=GFS+Didot' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="http://www.marklawrencedesign.com/MLD_main_site/wp-content/themes/MLD/css/new-style.css"/>
+
+<style type="text/css">#wrapper { opacity: 0; }</style>
+<noscript> <style type="text/css">#wrapper { opacity: 1; }</style></noscript>
+
+<script type="text/javascript" src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/themes/MLD/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/themes/MLD/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/themes/MLD/js/socialite.js"></script>
+<script type="text/javascript" src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/themes/MLD/js/socialite.pinterest.js"></script>
+<script type="text/javascript" src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/themes/MLD/js/comment-validation.js"></script>
+<script type="text/javascript" src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/themes/MLD/js/jquery.fancybox.js"></script>
+
+
+
+<script>
+$(document).ready(function(){
+    $('body').append('<div id="loaderWrapper"><div id="page-loader"></div></div>');
+    
+    $('header.desktop').css({ 'marginLeft' : -204 });
+    $('body').css({ 'overflow' : 'hidden' });
+    $('#nav li').css({ 'marginLeft' : -200 });
+  refreshNav();
+  isotopeMyStuff();
+  filterNavMove();
+  siteAnimationsGeneral();
+  validateBlogPost();
+  validateContact();
+  homeTakeover();
+  
+$(".fancybox").fancybox({
+    helpers : {
+        overlay : {
+            locked : false
+        }
+    }
+});
+
+
+
+
+  // hide #back-top first
+  $("#back-top").css({ 'opacity' : '0' });
+
+  // fade in #back-top
+  $(function () {
+
+    $(window).scroll(function () {
+      if ($(this).scrollTop() > 800) {
+        $('#btnTop').stop().animate({ bottom: '0', opacity:'1'}, 400, "easeOutBack");
+      } else {
+        $('#btnTop').stop().animate({ bottom: '-67', opacity:'0'}, 400, "easeOutBack");
+      }
+    });
+
+    // scroll body to 0px on click
+    $('#btnTop').click(function () {
+      $('body,html').animate({
+        scrollTop: 0
+      }, 600, "swing");
+      return false;
+    });
+  });
+
+
+
+})
+
+
+
+
+$(window).load(function() {
+
+      $('#wrapper').css({ 'opacity' : '1' });
+      
+      $('#page-loader').delay(1500).animate({ marginTop: '-270px' }, 400, "easeInBack", function() {
+    // Animation complete.
+          isotopeMyStuff();
+          $('#loaderWrapper').fadeOut(500, function(){
+          $('body').css({ 'overflow' : 'auto' });
+          $('#oldSite_lightbox').fadeIn();
+          $('header.desktop').animate({ marginLeft: '0px' }, 400, "easeOutCubic");
+          $('#nav li').each(function(i) {   
+       $(this).delay(i*200).animate({
+        marginLeft: '0px'
+
+      })
+    });
+    });
+  });
+
+
+
+
+})
+
+$('#book').animate({
+    opacity: 0.25,
+    left: '+=50',
+    height: 'toggle'
+  }, 5000, function() {
+    // Animation complete.
+  });
+
+
+
+
+
+</script>
+
+
+<script type="text/javascript" src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/themes/MLD/js/smartajax/load.smartajax.js"></script>
+<script type="text/javascript" src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/themes/MLD/js/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/themes/MLD/js/scripts.js"></script>
+
+
+
+
+    
+<script type='text/javascript' src='http://www.marklawrencedesign.com/MLD_main_site/wp-includes/js/comment-reply.js?ver=3.4.2'></script>
+<link rel='prev' title='BBC &#8211; Responsive Website' href='http://www.marklawrencedesign.com/bbc-responsive-website/' />
+<link rel='canonical' href='http://www.marklawrencedesign.com/kate-spade-ecommerce-web-design/' />
+<link rel='shortlink' href='http://www.marklawrencedesign.com/?p=1028' />
+
+<!-- Bad Behavior 2.2.14 run time: 6.953 ms -->
+<script type="text/javascript">
+<!--
+function bb2_addLoadEvent(func) {
+  var oldonload = window.onload;
+  if (typeof window.onload != 'function') {
+    window.onload = func;
+  } else {
+    window.onload = function() {
+      oldonload();
+      func();
+    }
+  }
+}
+
+bb2_addLoadEvent(function() {
+  for ( i=0; i < document.forms.length; i++ ) {
+    if (document.forms[i].method == 'post') {
+      var myElement = document.createElement('input');
+      myElement.setAttribute('type', 'hidden');
+      myElement.name = 'bb2_screener_';
+      myElement.value = '1425221781 60.10.97.78';
+      document.forms[i].appendChild(myElement);
+    }
+  }
+});
+// --></script>
+    
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-19034527-1', 'marklawrencedesign.com');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+
+<body class="workSinglePage">
+
+<div id="wrapper">
+
+        <header class="desktop smartAjaxNav">
+          <a href="http://www.marklawrencedesign.com" class="link more homeLink">
+            <div id="logo" class="hide-text desktopLogo"><h1>Mark Lawrence Design</h1></div><!--logo-->
+            <div id="aniLogo" class="logo"><h1>Mark Lawrence Design</h1></div>
+          </a>
+          
+
+          <div id="linkWrap">           
+
+          <nav id="nav" class="nav">
+            <ul>
+            <li class="workLink"><a href="http://www.marklawrencedesign.com/work/">Work</a></li>
+            <li class="navMoveWrap">
+            <ul id="navMove">
+              <li class="page_item page-item-12"><a class="link more" href="http://www.marklawrencedesign.com/blog/">Blog</a></li>
+<li class="page_item page-item-14"><a class="link more" href="http://www.marklawrencedesign.com/about/">About</a></li>
+<li class="page_item page-item-16"><a class="link more" href="http://www.marklawrencedesign.com/contact/">Contact</a></li>
+           </ul>
+         </li>
+            </ul>
+          </nav>
+
+        </div> <!-- linkWrap -->
+      </header>
+      
+      <div id="navBG"></div>
+<!--******************-->
+<!--    MOBILE NAV    -->
+<!--******************-->
+      <header class="mobile smartAjaxNav">
+          <a href="http://www.marklawrencedesign.com" class="link more">
+            <div id="mobileLogo" class="hide-text logo"><h1>Mark Lawrence Design</h1></div><!--logo-->
+          </a>
+          <nav id="mobileNav" class="nav">
+            <ul>
+
+
+
+        <li class="page_item page-item-10"><a class="link more" href="http://www.marklawrencedesign.com/work/">Work</a></li>
+<li class="page_item page-item-12"><a class="link more" href="http://www.marklawrencedesign.com/blog/">Blog</a></li>
+<li class="page_item page-item-14"><a class="link more" href="http://www.marklawrencedesign.com/about/">About</a></li>
+<li class="page_item page-item-16"><a class="link more" href="http://www.marklawrencedesign.com/contact/">Contact</a></li>
+
+            </ul>
+          </nav>
+      </header> 
+
+
+<!--******************-->
+<!-- AJAX LOADED AREA -->
+<!--******************-->
+
+<div id="ajaxLoad">
+ 
+
+<article id="workPost" class="workEntries clearfix">
+
+  <h1>Kate Spade &#8211; eCommerce Web design</h1>
+
+  <div id="hero" class="clearfix">
+    <img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2014/10/kate-spade1.jpg" class="attachment-post-thumbnail wp-post-image" alt="kate-spade1" title="kate-spade1" />
+  </div>
+
+  <div id="workDescription">
+    <div id="workDescriptionContent" class="clearfix">
+
+          <!-- Strip images from post, keep text -->
+
+    </div> <!-- workDescriptionContent -->
+  </div><!-- workDescription -->
+
+<!-- list all images added in post editor -->
+  <div class="supportingImage clearfix"><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2014/10/kate-spade2.jpg" alt="Kate Spade &#8211; eCommerce Web design - by Mark Lawrence"/></div>
+  <div class="supportingImage clearfix"><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2014/10/kate-spade3.jpg" alt="Kate Spade &#8211; eCommerce Web design - by Mark Lawrence"/></div>
+  <div class="supportingImage clearfix"><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2014/10/kate-spade4.jpg" alt="Kate Spade &#8211; eCommerce Web design - by Mark Lawrence"/></div>
+  <div class="supportingImage clearfix"><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2014/10/kate-spade5.jpg" alt="Kate Spade &#8211; eCommerce Web design - by Mark Lawrence"/></div>
+  <div class="supportingImage clearfix"><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/uploads/2014/10/kate-spade6.jpg" alt="Kate Spade &#8211; eCommerce Web design - by Mark Lawrence"/></div>
+
+  <div id="postNav">
+    <!-- PREVIOUS BUTTON -->
+    <div style="display:none"  id="btnPrev" class="postBtn"> </div>
+    <!-- NEXT BUTTON -->
+    <a href="http://www.marklawrencedesign.com/bbc-responsive-website/" class="nextLink"><div id="btnNext" class="postBtn"> </div>
+    </a>
+  </div><!-- postNav -->  
+
+ </article><!-- workPost -->
+
+</div><!-- ajaxLoad Ends -->
+
+<!--***********************-->
+<!-- AJAX LOADED AREA ENDS -->
+<!--***********************-->  
+
+<div id='lightbox'></div>
+<div id="ajax-loader"><img src="http://www.marklawrencedesign.com/MLD_main_site/wp-content/themes/MLD/images/ajax-loader-sm.gif" width="31" height="31" /></div>
+<div id="btnTop">   </div>
+
+</div><!--wrapper-->
+
+<div id="awwwards" class="right green">
+<a href="http://www.awwwards.com/best-websites/mark-lawrence-design-1" target="_blank">best websites of the world</a>
+</div>
+
+</body>
+
+</html>  
