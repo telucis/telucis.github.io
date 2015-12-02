@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=3,minimum-scale=1"> 
 	<meta name="description" content="home-page">
 	<meta name="author" content="telucis@126.com">
-	<title>index</title>
+	<title>about</title>
 
 	<link rel="shortcut icon" href="images/favicon.png">
 	<link rel="stylesheet" href="css/style.css">
@@ -22,7 +22,7 @@
 				<ul>
 					<li class="workLink"><a href="work.html">WORK</a></li>
 					<li class="githubLink"><a href="https://github.com/telucis">GITHUB</a></li>
-					<li class="aboutLink"><a href="about.html">ABOUT</a></li>
+					<li class="aboutLink"><a class="active" href="about.html">ABOUT</a></li>
 					<li class="aboutLink"><a href="contact.html">CONTACT</a></li>
 				</ul>
 			</nav>
@@ -45,14 +45,14 @@
 		<!-- LOADING AREA -->
 		<div id="content">
 			<section>
-				<ul id="bg">
-					<li class="active"><span></span><div><h3>&nbsp;&nbsp;&nbsp;Telucis<br>Design</h3></div></li>
-					<li><span></span><div><h3>&nbsp;&nbsp;&nbsp;Telucis<br>Design</h3></div></li>
-					<li><span></span><div><h3>&nbsp;&nbsp;&nbsp;Telucis<br>Design</h3></div></li>
-					<li><span></span><div><h3>&nbsp;&nbsp;&nbsp;Telucis<br>Design</h3></div></li>
-					<li><span></span><div><h3>&nbsp;&nbsp;&nbsp;Telucis<br>Design</h3></div></li>
-					<li><span></span><div><h3>&nbsp;&nbsp;&nbsp;Telucis<br>Design</h3></div></li>
-				</ul>
+				<div id="about">
+					<h1>HELLO!</h1>
+					<p>你好，欢迎来到我的主页。</p>
+					<p>这个主页采用极简Style搭建在Github上，存放了一些2015年开始的工作和个人的项目，记录一些技术方面的成长历程。</p>
+					<p>我目前居住在北京(海淀区)，就职于中科院国家空间科学中心(NSSC)，与此同时也希望有一些新的职业发展方向。</p>
+					<p>我欣赏并推崇Geek精神，喜欢简洁、优美的代码，喜欢JS/HTML5/CSS3，喜欢一切简洁、快速、强壮且优美的事物。</p>
+					<p>如果你希望有进一步了解，请关注我的<a href="work.html">个人项目</a>或<a href="contact.html">个人简历</a>。</p>
+				</div>
 			</section>
 		</div><!-- content end -->
 
@@ -92,7 +92,9 @@
 		$('#nav li:nth-child(1)').animate({marginLeft:'0px'},800);
 		$('#nav li:nth-child(2)').animate({marginLeft:'0px'},1000);
 		$('#nav li:nth-child(3)').animate({marginLeft:'0px'},1200);
-		$('#nav li:nth-child(4)').animate({marginLeft:'0px'},1400);
+		$('#nav li:nth-child(4)').animate({marginLeft:'0px'},1400,function(){
+			$('#about').animate({opacity: '1'},300)
+		});
 	})
 	</script>
 </body>
