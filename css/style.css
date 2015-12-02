@@ -61,6 +61,7 @@ header.desktop{position: fixed;z-index: 10;width: 205px;height: 100%;top: 0;left
 #about h1{font-size: 3em;padding: 30px 0;}
 #about p{text-indent: 2em;line-height: 30px;}
 
+.contact{background: #EBEBEB}
 #contact{position: absolute;height: 100%;width: 100%;background: #EBEBEB;padding: 80px 100px 0 250px;color: #666}
 #contact h1{font-size: 2em;text-align: center;line-height: 50px;}
 #contact h2{line-height: 20px;font-weight: 600;}
@@ -100,4 +101,10 @@ header.desktop{position: fixed;z-index: 10;width: 205px;height: 100%;top: 0;left
   #workHook{margin-left: 0px}
   #about{margin-left: 0;width: 400px;}
   #contact{padding-left: 30px;}
+}
+@media screen and (max-width: 600px){
+  #mobileNav{margin-right: 50px;}
+}
+@media screen and (max-width: 450px){
+  #mobileNav{margin-right: 0px;}
 }
