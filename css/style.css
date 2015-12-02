@@ -61,11 +61,19 @@ header.desktop{position: fixed;z-index: 10;width: 205px;height: 100%;top: 0;left
 #about h1{font-size: 3em;padding: 30px 0;}
 #about p{text-indent: 2em;line-height: 30px;}
 
-#contact{position: absolute;height: 100%;width: 100%;background: #EBEBEB;padding: 50px 100px 0 250px;color: #666}
+#contact{position: absolute;height: 100%;width: 100%;background: #EBEBEB;padding: 80px 100px 0 250px;color: #666}
 #contact h1{font-size: 2em;text-align: center;line-height: 50px;}
 #contact h2{line-height: 20px;font-weight: 600;}
 #contact p{line-height: 30px;text-indent: 2em;}
 #contact p.tCenter{text-align: center;}
+
+.mobile {display: none;width:100%;top:0;height:72px;z-index: 10;position: absolute;background-color:#ffffff;  }
+#mobileNav{margin-right: 200px;}
+#mobileNav li {float: right;padding-right: 15px;padding-top: 9px;}
+#mobileNav li a{font-size: 1em;line-height: 50px;color: #666;}
+#mobileNav li a:hover,#nav li a.active{color: #b22512;}
+#mobileLogo {background-image: url("../images/mld_logo.svg");background-position: center center;background-repeat: no-repeat;float: left;height: 52px;width: 78px;z-index: 10;margin-top: 10px;  }
+#mobileLogo h1{display: none;}
 
 @media screen and (max-width: 1366px){
   #bg li:nth-child(1) span{background-image: url(../images/hero_images/hero1_m_1366.jpg);}
@@ -85,6 +93,11 @@ header.desktop{position: fixed;z-index: 10;width: 205px;height: 100%;top: 0;left
   #bg li:nth-child(5) span{background-image: url(../images/hero_images/hero5_s_1024.jpg);}
   #bg li:nth-child(6) span{background-image: url(../images/hero_images/hero6_s_1024.jpg);}
 }
-@media screen and(max-width: 800){
-
+@media screen and (max-width: 800px){
+  .mobile{display: block;}
+  .desktop{display: none;}
+  #navBG{display: none;}
+  #workHook{margin-left: 0px}
+  #about{margin-left: 0;width: 400px;}
+  #contact{padding-left: 30px;}
 }

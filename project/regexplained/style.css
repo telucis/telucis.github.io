@@ -1,0 +1,29 @@
+/* CSS RESET */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video { text-decoration: none;  margin: 0;  padding: 0;  border: 0;  font-size: 100%;  font: inherit;
+  vertical-align: baseline;-webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family:'微软雅黑';
+}
+p,a,span{font-weight: 300;}
+
+/*CSS START*/
+body{background: #5D4D3F;padding: 20px;font-size: 5em;text-align: center;}
+div{text-align: center;color:#BDE151;display: inline-block;}
+.matchBox{position: relative;}
+#pattern{margin: 50px 0;}
+#source{margin-top: 100px;}
+#match{position: absolute;height: 104px;background: rgba(0,0,0,.3);width: 0;left: 0;top: 0;z-index: -1;border-radius: 10px;}
+#submatch{position: absolute;height: 80px;background: rgba(0,0,0,.5);top: 0;}
+input{border:0;padding: 0;margin: 0;background: #5D4D3F;line-height: 80px;font-size: 80px;width: 10px;color:#BDE151;text-align: center;font-family:monospace;font-weight: 700;background: 0;}

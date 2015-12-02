@@ -22,10 +22,10 @@
 				<ul>
 					<li class="workLink"><a  class="active" href="work.html">WORK</a>
 						<ul>
-							<li class="subnav"><a href="">ALL</a></li>
-							<li class="subnav"><a href="">C/C++</a></li>
-							<li class="subnav"><a href="">JS/HTML/CSS</a></li>
-							<li class="subnav"><a href="">Basic</a></li>
+							<li class="subnav"><a href="#">ALL</a></li>
+							<li class="subnav"><a href="#">C/C++</a></li>
+							<li class="subnav"><a href="#">JS/HTML/CSS</a></li>
+							<li class="subnav"><a href="#">Basic</a></li>
 						</ul>
 					</li>
 					<li class="githubLink"><a href="https://github.com/telucis">GITHUB</a></li>
@@ -53,12 +53,13 @@
 		<div id="content">
 			<section>
 				<ul id="workHook">
-					<li><a href="https://github.com/telucis/Driver-StepperMotor"><h2>Driver-StepperMotor</h2><img src="images/work/1.jpg" alt=""></a></li>
-					<li><a href="https://github.com/telucis/games/tree/master/2048"><h2>2048</h2><img src="images/work/2048.png" alt=""></a></li>
-					<li><a href="https://github.com/telucis/Measurement-and-Control-System"><h2>Measurement-and-Control-System</h2><img src="images/work/2.jpg" alt=""></a></li>
-					<li><a href="https://github.com/telucis/RPA-exprement"><h2>RPA-exprement</h2><img src="images/work/2.jpg" alt=""></a></li>
-					<li><a href=""><h2></h2><img src="images/work/2.jpg" alt=""></a></li>
-					<li><a href=""><h2></h2><img src="images/work/2.jpg" alt=""></a></li>
+					<li class="c"><a href="https://github.com/telucis/Driver-StepperMotor"><h2>Driver-StepperMotor</h2><img src="images/work/1.jpg" alt=""></a></li>
+					<li class="js"><a href="https://github.com/telucis/games/tree/master/2048"><h2>2048</h2><img src="images/work/2048.png" alt=""></a></li>
+					<li class="c"><a href="https://github.com/telucis/RPA-exprement"><h2>RPA-exprement</h2><img src="images/work/2.jpg" alt=""></a></li>
+					<li class="js"><a href="https://github.com/telucis/ife/tree/master/task0003"><h2>任务管理</h2><img src="images/work/task.jpg" alt=""></a></li>
+					<li class="js"><a href="https://github.com/telucis/canvas/tree/master/drawing%20board"><h2>涂鸦本</h2><img src="images/work/scrawl.jpg" alt=""></a></li>
+					<li class="c"><a href="https://github.com/telucis/Measurement-and-Control-System"><h2>Measurement-and-Control-System</h2><img src="images/work/control.jpg" alt=""></a></li>
+
 				</ul>
 			</section>
 		</div><!-- content end -->
@@ -103,8 +104,22 @@
 			$('#nav li.workLink ul').slideDown(500);
 			$('#workHook').animate({opacity: '1'},500)	
 		});
-		
-
+				
+		$('.subnav:nth-child(1)').click(function(){
+			$('#workHook li').css('display','block');
+		})
+		$('.subnav:nth-child(2)').click(function(){
+			$('#workHook li').css('display','none');
+			$('.c').css('display','block');
+		})
+		$('.subnav:nth-child(3)').click(function(){
+			$('#workHook li').css('display','none');
+			$('.js').css('display','block');
+		})
+		$('.subnav:nth-child(4)').click(function(){
+			$('#workHook li').css('display','none');
+			$('.basic').css('display','block');
+		})
 	})
 	</script>
 </body>
