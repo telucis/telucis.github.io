@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=3,minimum-scale=1,user-scalable=no">
+	<meta name="description" content="">
+	<meta name='keyword' content="">
+	<meta name="author" content="">
+	<meta name="robots" content="">
+	<title>test</title>
+	<style type="text/css">
+		body,div,span,header,footer,article,section,aside,ul,li,a{padding: 0;margin: 0;font-family: '微软雅黑';
+			-wekbit-box-sizing:border-box;
+			-moz-box-sizing:border-box;
+			box-sizing:border-box;}
+		#box{position: relative;height: 500px; width: 500px;}
+		.little-box{position: absolute;border: 1px solid #fff;width: 100px;height: 100px;border-radius: 10px;background: #ccc;
+			color: #fff;font-size: 60px;line-height: 100px;text-align: center;font-weight: 900;}
+		span{border: 1px solid #ccc; border-radius: 5px; width: 150px;padding: 10px;display: block;margin:0 auto;cursor: pointer;font-size: 20px;text-align: center;margin-top: 10px;}
+	</style>
+</head>
+<body>
+<span id="obtn">click me!</span><span id='score'></span>
+<div id="box"></div>
+<script type="text/javascript" src="support.js"></script>
+<script type="text/javascript">
+window.onload=function(){ 
+	var obtn=document.getElementById('obtn');
+	var box=document.getElementById('box');
+	var score=document.getElementById('score');
+	var arr = [	[0,0,0,0],
+				[0,0,0,0],
+				[0,0,0,0],
+				[0,0,0,0] ]
+	obtn.onclick=function(){ 
+		initial();
+	}
+	initial();
+	function initial(){ 
+		//清空
+		box.innerHTML='';
+		for(var i=0;i<arr.length;i++){ 
+			for(var j=0;j<arr[i].length;j++){ 
+				arr[i][j]=0;
+			}
+		}
+		//生成随机块
+		randomBox();
+		randomBox();
+		getScore();
+	}
+	function gameover(){ 
+		for(var i=0;i<arr.length;i++){ 
+			for(var j=0;j<arr[i].length;j++){ 
+				if(arr[i][j]==0){ 
+					return false;
+				}
+			}
+		}
+		if(isgameover){
+			alert('game over!');	
+		}
+		return true;
+	}
+	function isgameover(){
+		for(var i=0;i<arr.length;i++){ 
+			for(var j=1;j<arr[i].length;j++){ 
+				if(arr[i][j]==arr[i][j-1]){
+					return false
+				}
+			}
+		}
+		for(var j=0;j<arr.length;j++){ 
+			for(var i=1;i<arr.length;i++){ 
+				if(arr[i][j]==arr[i-1][j]){
+					return false
+				} 
+			}
+		}
+		return true;
+	}
+	function randomBox(){ 
+		do{ 
+			var ox=Math.floor(Math.random()*4);
+			var oy=Math.floor(Math.random()*4);
+		}while(arr[ox][oy]!=0)
+		arr[ox][oy]=Math.floor(Math.random()*2+1)*2;
+		var obox=document.createElement('div');
+		obox.innerHTML=arr[ox][oy];
+		obox.style.left=oy*100+'px';
+		obox.style.top=ox*100+'px';
+		obox.className='little-box';
+		box.appendChild(obox);
+	}
+	function getScore(){ 
+		var currentScore=0;
+		for(var i=0;i<arr.length;i++){ 
+			for(var j=0;j<arr[i].length;j++){ 
+				currentScore+=arr[i][j]*100;
+			}
+		}
+		score.innerHTML=currentScore;
+	}
+	function printBox(){ 
+		box.innerHTML='';
+		for(var i=0;i<arr.length;i++){ 
+			for(var j=0;j<arr[i].length;j++){
+				if(arr[i][j]!=0){ 
+					var obox=document.createElement('div');
+					obox.innerHTML=arr[i][j];
+					if(arr[i][j]>100){
+						obox.style.fontSize='40px';
+						obox.style.background='#aaa';
+					}else if(arr[i][j]>1000){
+						obox.style.fontSize='20px';
+						obox.style.background='#888';
+					}
+					obox.style.left=j*100+'px';
+					obox.style.top=i*100+'px';
+					obox.className='little-box';
+					box.appendChild(obox);
+				}
+			}
+		}
+	}
+	document.body.onkeydown=function(e){ 
+		switch(e.keyCode){ 
+			case 37:
+				moveLeft();
+				break;
+			case 38:
+				moveUp();
+				break;
+			case 39:
+				moveRight();
+				break;
+			case 40:
+				moveDown();
+				break;
+			default:
+				break;
+		}
+	}
+	function canMoveLeft(i,j){ 
+		if(arr[i][j-1]==arr[i][j]){ 
+			arr[i][j-1]+=arr[i][j];
+			arr[i][j]=0;
+			return true;
+		}
+		return false;
+	}
+	function canMoveRight(i,j){ 
+		if(arr[i][j+1]==arr[i][j]){ 
+			arr[i][j+1]+=arr[i][j];
+			arr[i][j]=0
+			return true;
+		}
+		return false;
+	}
+	function zeroLeft(arr){
+		var temp=[];
+		for(var i=0;i<arr.length;i++){
+			arr[i]!=0 && temp.push(arr[i]);
+		}
+		while(temp.length!=arr.length){
+			temp.push(0);
+		}
+		return temp;
+	}
+	function zeroRight(arr){
+		var temp=[];
+		for(var i=arr.length-1;i>=0;i--){
+			arr[i]!=0 && temp.unshift(arr[i]);
+		}
+		while(temp.length!=arr.length){
+			temp.unshift(0);
+		}
+		return temp;
+	}
+	function cloneArr(arr){
+		var temp=[];
+		for(var i=0;i<arr.length;i++){
+			temp[i]=[];
+			for(var j=0;j<arr[i].length;j++){
+				temp[i][j]=arr[i][j];
+			}
+		}
+		return temp;
+	}
+	function moveLeft(){ 
+		var arr_temp=cloneArr(arr);
+		for(var i=0;i<arr.length;i++){ 
+			arr[i]=zeroLeft(arr[i]);
+			for(var j=1;j<arr[i].length;j++){
+				canMoveLeft(i,j)
+			}
+			arr[i]=zeroLeft(arr[i]);
+		}
+		printBox();
+		if(gameover())return false;
+		arr_temp.toString()!=arr.toString() && randomBox();
+		getScore();
+	}
+	function moveRight(){ 
+		var arr_temp=cloneArr(arr);
+		for(var i=0;i<arr.length;i++){ 
+			arr[i]=zeroRight(arr[i]);
+			for(var j=arr[i].length-2;j>=0;j--){
+				canMoveRight(i,j)
+			}
+			arr[i]=zeroRight(arr[i]);
+		}
+		printBox();
+		if(gameover())return false;
+		arr_temp.toString()!=arr.toString() && randomBox();
+		getScore();
+	}
+	function moveUp(){ 
+		var arr_temp=cloneArr(arr);
+		for(var j=0;j<arr[0].length;j++){ 
+			var temp=[];
+			for(var i=0;i<arr.length;i++){
+				temp.push(arr[i][j]);
+			}
+			temp=zeroLeft(temp);
+			for(var k=1;k<temp.length;k++){
+				if(temp[k-1]==temp[k]){
+					temp[k-1]+=temp[k];
+					temp[k]=0;
+				}
+			}
+			temp=zeroLeft(temp);
+			for(var l=0;l<temp.length;l++){
+				arr[l][j]=temp[l];
+			}
+		}
+		printBox();
+		if(gameover())return false;
+		arr_temp.toString()!=arr.toString() && randomBox();
+		getScore();
+	}
+	function moveDown(){ 
+		var arr_temp=cloneArr(arr);
+		for(var j=0;j<arr[0].length;j++){ 
+			var temp=[];
+			for(var i=0;i<arr.length;i++){
+				temp.push(arr[i][j]);
+			}
+			temp=zeroRight(temp);
+			for(var k=temp.length-2;k>=0;k--){
+				if(temp[k+1]==temp[k]){
+					temp[k+1]+=temp[k];
+					temp[k]=0;
+				}
+			}
+			temp=zeroRight(temp);
+			for(var k=0;k<temp.length;k++){
+				arr[k][j]=temp[k];
+			}
+		}
+		printBox();
+		if(gameover())return false;
+		arr_temp.toString()!=arr.toString() && randomBox();
+		getScore();
+	}
+}
+</script>
+</body>
+</html>

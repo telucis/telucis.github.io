@@ -24,6 +24,15 @@ div{text-align: center;color:#BDE151;display: inline-block;}
 .matchBox{position: relative;}
 #pattern{margin: 50px 0;}
 #source{margin-top: 100px;}
-#match{position: absolute;height: 104px;background: rgba(0,0,0,.3);width: 0;left: 0;top: 0;z-index: -1;border-radius: 10px;}
-#submatch{position: absolute;height: 80px;background: rgba(0,0,0,.5);top: 0;}
-input{border:0;padding: 0;margin: 0;background: #5D4D3F;line-height: 80px;font-size: 80px;width: 10px;color:#BDE151;text-align: center;font-family:monospace;font-weight: 700;background: 0;}
+#match{position: absolute;height: 108px;background: rgba(0,0,0,.3);width: 0;left: 0;top: 0;z-index: -1;border-radius: 10px;}
+#submatch{position: absolute;height: 8px;background: rgba(0,0,0,.5);top: 0;}
+input{border:0;padding: 0;margin: 0;background: #5D4D3F;line-height: 80px;font-size: 80px;width: 10px;color:#BDE151;text-align: center;font-family:monospace;font-weight: 700;background: 0;overflow: auto;outline: none;}
+input:hover{outline: 2px dashed #666;}
+
+.cross{position: absolute;margin-left: -250px;width: 150px;height: 150px;border:20px solid #3A3026; border-radius: 50%;text-align: center;font-weight: 900;color: #3A3026;line-height: 110px;display: none;}
+
+ul,li{list-style: none;}
+a{text-decoration: none}
+#tool{position: absolute;right: 10px;bottom: 10px;font-size: 20px;}
+#tool li{height: 40px;border:1px solid #4B3E33;background: #4B3E33;line-height: 18px;margin: 10px;padding: 10px;border-radius: 10px;}
+#tool li a{color: #FFDCAA;}

@@ -1,53 +1,56 @@
 $(function(){
+	var ch=41;
 	var regex='';
 	var result=null;
-	$('#sourceText').css('width',$('#sourceText')[0].value.length*40+'px')
-	$('#patternText').css('width',$('#patternText')[0].value.length*40+'px')
-	$('#sourceText').bind('keypress',function(){
-		setSouLength();
+	$('#sourceText').css('width',$('#sourceText').val().length*ch+'px')
+	$('#patternText').css('width',$('#patternText').val().length*ch+'px')
+	doMatch();
+	setInterval(function(){
+		$('#sourceText').css('width',$('#sourceText').val().length*ch+'px');
+		$('#patternText').css('width',$('#patternText').val().length*ch+'px');
+		$('#sourceText').css('width')=='0px' && $('#sourceText').css('width','10px')
+		$('#patternText').css('width')=='0px' && $('#patternText').css('width','10px')	
+	},100)	
+	
+	$('#patternText').bind('keyup',function(){
+		doMatch();
 	})
-	$('#patternText').bind('keypress',function(){
+	$('#sourceText').bind('keyup',function(){
+		doMatch();
+	})
+	function doMatch(){
 		regex=buildRegex();
-		result=$('#sourceText')[0].value.match(regex);
+		result=$('#sourceText').val().match(regex);
 		if(result==null || result.length==0){
-			console.log('no way');
+			loseMatch();
 		}else{
-			console.log(result[0]);	
+			getMatch();
 		}
-		setPatLength();
-		
-	})
-
+	}
+	function getMatch(){
+		var ad=$('#sourceText').val().indexOf(result[0]);
+		$('#match').animate({left : ad*ch+'px', width : result[0].length*ch+'px'},100)
+		$('#source').css('color' , '#BDE151');
+		$('#sourceText').css('color' , '#BDE151');
+		$('.cross').css('display', 'none')
+	}
+	function loseMatch(){
+		$('#match').css({'width' : '0' , 'left' : '0'});
+		$('#source').css('color' , '#fbb');
+		$('#sourceText').css('color' , '#fbb');
+		$('.cross').css('display', 'block')
+	}
 	function buildRegex(){
-		return new RegExp(document.getElementById('patternText').value,'g')
+		return new RegExp($('#patternText').val(),'g')
 	}
-	function setPatLength(){
-		$('#patternText').css('width',$('#patternText')[0].value.length*40+'px');
-		$('#patternText').css('width')=='0px' && ($('#patternText').css('width','15px'));
+
+	for(var i=0;i<$('#tool a').length;i++){
+		$('#tool a').eq(i).click(function(){
+			$('#patternText').attr('value',$(this).attr('title'));
+			doMatch();
+		})
 	}
-	function setSouLength(){
-		$('#sourceText').css('width',$('#sourceText')[0].value.length*40+'px')
-		$('#sourceText').css('width')=='0px' && ($('#sourceText').css('width','15px'));
-	}
+	
+
 })
 
-function onMatch() {
-	if (!isValidFields())
-	return false;
-	document.getElementById("textMatchResult").value = "";
-	var regex = buildRegex();
-	var result = document.getElementById("textSour").value.match(regex);
-	if (null==result || 0==result.length) {
-		document.getElementById("textMatchResult").value = "（没有匹配）";
-		return false;
-	}
-	if (document.getElementById("optionGlobal").checked) {
-		var strResult = "共找到 " + result.length + " 处匹配：\r\n";
-		for (var i=0;i < result.length;++i)strResult = strResult + result[i] + "\r\n";
-		document.getElementById("textMatchResult").value = strResult;
-	}
-	else {
-		document.getElementById("textMatchResult").value= "匹配位置：" + regex.lastIndex + "\r\n匹配结果：" + result[0];
-	}
-	return true;
-}

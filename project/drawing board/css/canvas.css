@@ -1,0 +1,65 @@
+body{margin: 0;padding: 0;font-size: 12px;}
+#drawController{
+	position: absolute;left: 40px;top: 20px;width: 40px;
+}
+img{cursor: pointer;}
+.border_nochoose{
+	border-width: 2px;
+	border-style: dashed;
+	border-color: rgba(20,126,239,0.5);
+	margin-top: 5px;
+}
+.border_choose{
+	border-width: 2px;
+	border-color: rgb(255,0,0);
+	border-style: dashed;
+	margin-top: 5px;
+}
+canvas{
+	border-width: 1px;
+	border-style: dashed;
+	border-color: #ccc;
+	position: absolute;
+	left: 70px;
+	top: 20px;
+}
+
+
+#showHistory{
+	width: 780px;
+	left: 600px;
+	position: absolute;
+}
+table tr td a{
+	disabled:disabled;
+}
+table tr td img{
+	border-width: 2px;
+	border-style: dashed;
+	border-color: #ccc;
+	margin-top: 5px;
+}
+.i1{background: #000;}
+.i2{background: #f00;}
+.i3{background: #80ff00;}
+.i4{background: #0ff;}
+.i5{background: #808080;}
+.i6{background: #ff8000;}
+.i7{background: #408080;}
+.i8{background: #8000ff;}
+.i9{background: #cc0;}
+input[type="button"]{width: 24px;height: 24px;}
+#color{
+	width: 270px;
+	height: 25px;
+	padding: 2px;
+	border-width: 2px;
+	border-style: dashed;
+	border-color: rgba(20,126,239,0.5);
+	position: absolute;
+	display: none;
+}
+#line_size{
+	position: absolute;
+	display: none;
+}

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=3,minimum-scale=1,user-scalable=no">
+	<meta name="description" content="This is a system of the task management.">
+	<meta name="telucis" content="telucis@126.com">
+	<title>task 3</title>
+	<style>
+		html{height:100%}
+		body{height:100%}
+		body,div,ul,li,img,a,p,header,aside,section,article,footer,textarea{padding: 0;margin: 0;border:0;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;}
+		body{font-family: '微软雅黑'}
+		.manage,.manage footer,.main aside,.main header,.main footer{border-right:1px solid #ccc;border-bottom: 1px solid #ccc;}
+		.head{width: 100%;background: #ddd;min-height: 60px;color: #8F8F8F;line-height: 60px;padding-left: 20px;z-index: 1;
+			}
+		.manage{width: 200px;padding-left: 20px;float: left;overflow: auto;
+			background: #F2F2F2;font-size: 15px;line-height: 25px;}
+		.manage ul{cursor: pointer;padding-right: 20px;line-height: 40px;text-indent: 2em;}
+		.manage ul .del,.manage ul .subdel{float: right;display: none;font-size: 20px;}
+		.manage ul .del:hover,.manage ul .subdel:hover{color: #fff;}
+		.manage ul:hover,.manage ul.active{background: #ded;}
+		.manage ul:hover .del{display: block;z-index: 10;}
+		.manage ul li{display: none;}
+		.manage ul.active li{display: block;}
+		.manage ul li:hover,.manage ul li.activesub{background: #ccc;}
+		.manage ul li:hover .subdel{display: block;z-index: 10;}
+		.manage footer{position: fixed;left: 0;bottom: 0;height: 60px;padding-left: 20px;
+			line-height: 60px;background: #eee;width: 200px;border-top: 1px solid #ccc;z-index: 1;}
+		.manage footer span{cursor: pointer;margin-right: 20px;}
+		.main{float:left;position: relative;}
+		.main aside{width: 200px;height: 100%;float: left;}
+		.main aside header{position: absolute;height: 60px;width: 200px;background:#eee;line-height: 60px; }
+		.main aside header span{cursor: pointer;font-size: 14px;margin-left: 15px;border: 1px solid #ccc;border-radius: 5px;padding: 2px;}
+		.main aside header span.choiced{background: #fff;}
+		.main aside div{width: 200px;height: 100%;padding: 60px 0 60px 0;overflow: auto;}
+		.main aside div dl{cursor: pointer;}
+		.main aside div dl.activetask,.main aside div dl:hover{background: #ded;}
+		.main aside div dl dd{display: none;}
+		.main aside footer{position: fixed;bottom: 0;height: 60px;width: 200px;background:#eee;border-top: 1px solid #ccc; padding-left: 20px;line-height: 60px;}
+		.main aside footer span{cursor: pointer;}
+		.main section{height: 100%;float: left;position: relative;}
+		.main section div{width: 100%;height: 100px;padding: 10px 0 10px 20px;border-bottom: 1px solid #ccc;line-height: 60px;font-size: 20px;}
+		.main section div input{border:0;height: 80px;width: 400px;padding-left: 30px;margin-left: 30px;font-size: 40px;line-height: 60px;color: #ccc;}
+		.main section #taskContent{height: 300px;width: 100%;padding: 20px;line-height: 60px;font-size: 30px;text-indent: 2em;color: #ccc;}
+		.main section footer{position: absolute;left: 0;bottom: 0;height: 60px;width: 100%;border:1px solid #ccc;line-height: 60px;text-align: center;background: #eee;}
+		.main section footer span{margin-right: 25px;cursor: pointer;}
+		.popup{position: absolute;top: 0;left: 0;height: 100%;width: 100%;background: #000;opacity: 0.3;z-index: 10;display: none;}
+		.popup div{position: absolute;top: 50%;left: 50%;height: 300px;width: 400px;margin-left: -200px;margin-top: -150px;background: #fff;border-radius: 10px;padding: 40px;font-size: 20px;}
+		.popup div #newclass,.popup div #newtask{width: 300px;height: 50px;line-height: 50px;font-size: 30px;margin: 10px 0 30px 0;border-radius: 10px;}
+		.popup div .btn{width: 100px;height: 40px;border-radius: 10px;float: right;margin-right: 10px;cursor: pointer;background: #c8c;font-size: 20px;font-family: '微软雅黑'}
+		.popup div .btn:hover{background: #a6a;}
+		.popup div .exit{position: absolute;right: 20px;top: 10px;font-size: 30px;cursor: pointer;}
+		.popup div .exit:hover{color: #c00;}
+	</style>
+</head>
+<body>
+	<header class='head'>GTD Tools</header>
+	<aside class='manage'>
+		<ul>所有任务</ul>
+		<span>分类列表</span>
+		<ul class="active">默认分类</ul>
+		<footer><span id='addclass'>新增分类</span><span id='clearclass'>清除分类</span></footer>
+	</aside>
+	<article class='main'>
+		<aside>
+			<header><span class='choiced'>所有</span><span>未完成</span><span>已完成</span></header>
+			<div id="mytask"></div>
+			<footer><span id='addtask'>新增任务</span></footer>
+		</aside>
+		<section class='detail'>
+			<div><label for="taskTitle">标 题 :</label><input type="text" id="taskTitle"></div>
+			<div><label for="taskTime">时 间 :<input type="text" id="taskTime"></label></div>
+			<textarea id="taskContent"></textarea>
+			<footer><span>确认</span><span>取消</span></footer>
+		</section>
+	</article>
+	<div class="popup">
+		<div>
+			<p>新增分类</p><hr>
+			<p>分类标题</p>
+			<input type="text" id='newclass'><br>
+			<button class="btn cancel">取消</button><button class="btn afirm">确定</button>
+			<span class="exit">×</span>
+		</div>
+	</div>
+	<div class="popup">
+		<div>
+			<p>新增任务</p><hr>
+			<p>任务标题</p>
+			<input type="text" id='newtask'><br>
+			<button class="btn cancel">取消</button><button class="btn afirm">确定</button>
+			<span class="exit">×</span>
+		</div>
+	</div>
+
+	<script src="js/task0003_support.js"></script>
+	<script>
+	window.onload=function(){
+		//主界面
+		var manage=document.getElementsByClassName('manage')[0];
+		var main=document.getElementsByClassName('main')[0];
+		var detail=document.getElementsByClassName('detail')[0];
+		var addclass=document.getElementById('addclass');
+		var clearclass=document.getElementById('clearclass');
+		var addtask=document.getElementById('addtask');
+
+		var myclass=manage.getElementsByTagName('ul');
+		var myclassli=manage.getElementsByTagName('li');
+		//弹出层
+		var popup=document.getElementsByClassName('popup');
+		var afirm=document.getElementsByClassName('afirm');
+		var cancel=document.getElementsByClassName('cancel');
+		var exit=document.getElementsByClassName('exit');
+		var newclass=document.getElementById('newclass');
+		var newtask=document.getElementById('newtask');
+		//编辑层
+		var tasklist=document.getElementById('mytask');
+		var mytask=tasklist.getElementsByTagName('dl');
+		var taskTitle=document.getElementById('taskTitle');
+		var taskTime=document.getElementById('taskTime');
+		var taskContent=document.getElementById('taskContent');
+		var editConfirm=document.getElementsByClassName('detail')[0].getElementsByTagName('footer')[0].getElementsByTagName('span')[0];
+		var editCancel=document.getElementsByClassName('detail')[0].getElementsByTagName('footer')[0].getElementsByTagName('span')[1];
+
+
+		addclass.onclick=function(){
+			popup[0].style.display='block';
+			newclass.focus();
+		}
+		addtask.onclick=function(){
+			popup[1].style.display='block';
+			newtask.focus();
+		}
+		clearclass.onclick=function(){
+			if(confirm("确定清除所有分类？")){
+				for(var i=myclass.length-1;i>1;i--){
+				myclass[i].remove();
+				}
+				localStorage.newclass="";
+				localStorage.newsubclass='';
+				localStorage.newtask='';
+			}
+		}
+		cancel[0].onclick=function(){
+			popup[0].style.display='none'
+		}
+		exit[0].onclick=function(){
+			popup[0].style.display='none'
+		}
+		cancel[1].onclick=function(){
+			popup[1].style.display='none'
+		}
+		exit[1].onclick=function(){
+			popup[1].style.display='none'
+		}
+		//自适应布局
+		subStyle();
+		function subStyle(){
+			manage.style.height=document.body.offsetHeight-60-60+'px';
+			main.style.height=document.body.offsetHeight-60+'px';
+			detail.style.width=document.body.offsetWidth-400+'px';
+		}
+		//设置本地存储
+		if(localStorage.newclass || localStorage.newsubclass){
+			//添加本地分类
+			classInitial();
+			classSubInitial()
+			taskInitial();
+		}else{
+			localStorage.newclass='';
+			localStorage.newsubclass='';
+			localStorage.newtask='';
+		}
+		//localStorage.clear();
+		console.log(localStorage.newclass);
+		console.log(localStorage.newsubclass);
+		console.log(localStorage.newtask);
+		function classInitial(){
+			for(var i=myclass.length-1;i>1;i--){
+				myclass[i].remove();
+				}
+			var oclass=localStorage.newclass.split(/\|/);
+			oclass=unique(oclass);
+			for(var i=0;i<oclass.length;i++){
+				var myli=document.createElement('ul');
+				myli.innerHTML='<span>'+oclass[i]+'</span>'+'<span class="del">×</span>';
+				manage.insertBefore(myli,manage.getElementsByTagName('footer')[0]);
+			}
+		}
+		function classSubInitial(){
+			var oclassli=localStorage.newsubclass.split(/\|/);
+			oclassli=unique(oclassli);
+			for(var j=0;j<oclassli.length;j++){
+				var oclassli_ch=oclassli[j].split(' ');
+				for(var i=0;i<myclass.length;i++){
+					if(myclass[i].firstChild.innerText==oclassli_ch[0]){
+						var myli=document.createElement('li');
+						myli.innerHTML='<span>'+oclassli_ch[1]+'</span>'+'<span class="subdel">×</span>';
+						myli.className=oclassli_ch[0];
+						myclass[i].appendChild(myli);
+						break;
+					}
+				}
+			}
+		}
+		function taskInitial(){
+			var otask=localStorage.newtask.split(/\|/);
+			otask=unique(otask);
+			for(var i=0;i<otask.length;i++){
+				var otask_ch=otask[i].split(' ');
+				var mydl=document.createElement('dl');
+				mydl.innerHTML='<span class="time">'+otask_ch[2]+' '+otask_ch[3]+'</span><dt>'+otask_ch[1]+'</dt><dd>'+otask_ch[4]+'</dd>';
+				mydl.className=otask_ch[0];
+				tasklist.appendChild(mydl);
+			}
+		}
+		function unique(arr){
+			var temp=[];
+			for(var i=0;i<arr.length;i++){
+				var flag=true;
+				for(var j=0;j<temp.length;j++){
+					if(temp[j]==arr[i]){
+						flag=false;
+						continue;
+					} 
+				}
+				arr[i]!='' && flag==true && temp.push(arr[i]);
+			}
+			return temp;
+		}
+		//添加分类
+		afirm[0].onclick=function(){
+			if(newclass.value==''){
+				alert('输入不能为空');
+				return false;
+			}
+			for(var i=0;i<myclass.length;i++){
+				if(newclass.value==myclass[i].firstChild.innerText){
+					alert('不能输入重复分类');
+					return false;
+				}
+			}
+			for(var j=0;j<myclassli.length;j++){
+				if(newclass.value==myclassli[j].firstChild.innerText){
+					alert('不能输入重复分类');
+					return false;
+				}
+			}
+			if(myclass[0].className=='active' || (myclass[1].className=='active')){
+				addClassUl();
+			}else{
+				addClassLi();
+			}
+		}
+		function addClassUl(){
+			var oli=document.createElement('ul');
+			oli.innerHTML='<span>'+newclass.value+'</span>'+'<span class="del">×</span>';
+			manage.insertBefore(oli,manage.getElementsByTagName('footer')[0]);
+			popup[0].style.display='none';
+			localStorage.newclass=localStorage.newclass+newclass.value+'|';
+			myclass=manage.getElementsByTagName('ul');
+			newclass.value='';
+			for(var j=0;j<myclass.length;j++){
+				myclass[j].className=''
+			}
+			oli.className='active';
+			getfocus();
+			delClass();
+		}
+		function addClassLi(){
+			var oli=document.createElement('li');
+			oli.innerHTML='<span>'+newclass.value+'</span>'+'<span class="subdel">×</span>';
+			oli.className=manage.getElementsByClassName('active')[0].firstChild.innerText.trim();
+			manage.getElementsByClassName('active')[0].appendChild(oli);
+			popup[0].style.display='none';
+			localStorage.newsubclass=localStorage.newsubclass+oli.className+' '+newclass.value+'|';
+			myclassli=manage.getElementsByTagName('li');
+			newclass.value='';
+			for(var i=0;i<myclassli.length;i++){
+				myclassli[i].className=myclassli[i].className.replace(' activesub','')
+			}
+			oli.className+=' activesub';
+			getfocusli();
+			delSubClass();
+		}
+		//点击获取焦点
+		function getfocus(){
+			for(var i=0;i<myclass.length;i++){
+				myclass[i].onclick=function(){
+					for(var j=0;j<myclass.length;j++){
+						myclass[j].className=''
+					}
+					this.className='active'
+					for(var i=0;i<myclassli.length;i++){
+						myclassli[i].className=myclassli[i].className.replace(' activesub','')
+					}
+
+					clickShowTask(this);
+				}
+			}
+		}
+		function getfocusli(){
+			for(var i=0;i<myclassli.length;i++){
+				myclassli[i].onclick=function(e){
+					e.cancelBubble=true;
+					for(var j=0;j<myclassli.length;j++){
+						myclassli[j].className=myclassli[j].className.replace(' activesub','')
+					}
+					this.className+=' activesub'
+
+					clickShowTask(this);
+				}
+			}
+		}
+		function clickShowTask(obj){
+			var showTask=tasklist.getElementsByClassName(obj.firstChild.innerHTML);
+				for(var l=0;l<mytask.length;l++){
+					mytask[l].style.display='none';
+				}
+				for(var k=0;k<showTask.length;k++){
+					showTask[k].style.display='block';
+				}
+		}
+		getfocusli();
+		getfocus();
+		//删除分类
+		function delClass(){
+			var delBtn=document.getElementsByClassName('del');
+			for(var i=0;i<delBtn.length;i++){
+				delBtn[i].onclick=function(){
+					localStorage.newclass=localStorage.newclass.replace(this.previousSibling.innerHTML+'|','');
+					localStorage.newsubclass=localStorage.newsubclass.replace(eval('/'+this.previousSibling.innerHTML+'\s\w+\|/g'),'')
+					//localStorage.newsubclass=localStorage.newsubclass.replace(/aaa\s\w+\|/g,'')
+					this.parentNode.remove();
+				}
+			}
+		}
+		function delSubClass(){
+			var delBtn=document.getElementsByClassName('subdel');
+			for(var i=0;i<delBtn.length;i++){
+				delBtn[i].onclick=function(){
+					localStorage.newsubclass=localStorage.newsubclass.replace(this.parentNode.parentNode.firstChild.innerHTML+' '+this.previousSibling.innerHTML+'|','');
+					this.parentNode.remove();
+				}
+			}
+		}
+		delClass();
+		delSubClass();
+
+
+
+		//添加任务
+		afirm[1].onclick=function(){
+			if(newtask.value==''){
+				alert('输入不能为空');
+				return false;
+			}
+			addTaskDl();
+		}
+		function addTaskDl(){
+			var odl=document.createElement('dl');
+			var time=new Date();
+			odl.innerHTML='<span class="time">'+time.getFullYear()+'-'+time.getMonth()+'-'+time.getDate()+' '+time.getHours()+':'+time.getMinutes()+'</span>'+'<dt>'+newtask.value+'</dt>';
+			odl.className=taskClass();
+			tasklist.appendChild(odl);
+			popup[1].style.display='none';
+			//localStorage.newtask=localStorage.newtask+odl.className+' '+newtask.value+'|';
+			mytask=tasklist.getElementsByTagName('dl');
+			newtask.value='';
+			
+			editTask();
+		}
+
+		function taskClass(){
+			if(document.getElementsByClassName('activesub')[0]){
+				return document.getElementsByClassName('activesub')[0].firstChild.innerHTML;
+			}else{
+				return document.getElementsByClassName('active')[0].firstChild.innerHTML;
+			}
+		}
+		//编辑任务
+		function editTask(){
+			for(var i=0;i<mytask.length;i++){
+				mytask[i].onclick=function(e){
+					e.cancelBubble=true;
+					for(var j=0;j<mytask.length;j++){mytask[j].className=mytask[j].className.replace(' activetask','')}
+					this.className+=" activetask";
+
+					taskTitle.value=this.childNodes[1].innerHTML;
+					taskTime.value=this.childNodes[0].innerHTML;
+					taskContent.value=this.childNodes[2].innerHTML;
+					taskContent.focus();
+				}
+			}
+		}
+		editTask();
+		editConfirm.onclick=function(){
+			var odl=document.getElementsByClassName('activetask')[0];
+			if(odl && (taskContent.value!='')){
+				localStorage.newtask=localStorage.newtask+odl.className.replace(' activetask','')+' '+taskTitle.value+' '+taskTime.value+' '+taskContent.value+'|';
+			}
+		}
+		editCancel.onclick=function(){
+			taskContent.value='';
+		}
+	}
+	</script>
+</body> 
+</html>

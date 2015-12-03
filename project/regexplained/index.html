@@ -12,19 +12,28 @@
 <body>
 	<div id="pattern">
 		/
-		<input type="text" id="patternText" value="ab">
+		<input type="text" id="patternText" value="abc">
 		/<span>g</span>
 	</div>
 	<br>
 	<div id="source">
+		<span class='cross'>×</span>
 		"
 		<div class="matchBox">
-			<input type="text" id="sourceText" value="ab">
+			<input type="text" id="sourceText" value="abc">
 			<div id="match"></div>
 			<div id="submatch"></div>
 		</div>
 		"
 	</div>
+	<ul id="tool">
+		<li><a href="#" title="[a-zA-z]+://[^s]*">匹配网址URL</a></li>
+		<li><a href="#" title="\d{3}-\d{8}|\d{4}-\{7,8}">匹配电话号码</a></li>
+		<li><a href="#" title="[1-9]\d{5}(?!\d)">匹配邮政编码</a></li>
+		<li><a href="#" title="^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$">匹配18位身份证</a></li>
+		<li><a href="#" title="^[1-9]\d*$">匹配正整数</a></li>
+		<li><a href="#" title="^-[1-9]\d*\.\d*|-0\.\d*[1-9]\d*$">匹配负浮点数</a></li>
+	</ul>
 	<script src='../jq/jquery-1.8.3.min.js'></script>
 	<script src='script.js'></script>
 </body>

@@ -99,7 +99,7 @@ header.desktop{position: fixed;z-index: 10;width: 205px;height: 100%;top: 0;left
   .desktop{display: none;}
   #navBG{display: none;}
   #workHook{margin-left: 0px}
-  #about{margin-left: 0;width: 400px;}
+  #about{margin: 20px 0 0;width: 400px;}
   #contact{padding-left: 30px;}
 }
 @media screen and (max-width: 600px){
