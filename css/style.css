@@ -67,6 +67,8 @@ header.desktop{position: fixed;z-index: 10;width: 205px;height: 100%;top: 0;left
 #contact h2{line-height: 20px;font-weight: 600;}
 #contact p{line-height: 30px;text-indent: 2em;}
 #contact p.tCenter{text-align: center;}
+#contact p.tit{font-weight: 900;background:rgba(100,100,100,0.3);}
+#contact p span{float: right;}
 
 .mobile {display: none;width:100%;top:0;height:72px;z-index: 10;position: absolute;background-color:#ffffff;  }
 #mobileNav{margin-right: 200px;}
